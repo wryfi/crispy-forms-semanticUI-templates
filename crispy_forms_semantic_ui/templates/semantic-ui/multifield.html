@@ -11,8 +11,8 @@
         {% endif %}
 
         {% crispy_field field %}
-        
-        {% if field.help_text %}
+
+        {% if field.help_text and form_show_help_text %}
             <div id="hint_{{ field.auto_id }}" class="formHint">{{ field.help_text|safe }}</div>
         {% endif %}
     </div>

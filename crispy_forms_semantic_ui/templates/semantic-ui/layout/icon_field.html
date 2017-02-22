@@ -14,30 +14,21 @@
             {% endfor %}
         {% endif %}
 
-        {% if field|is_checkbox %}
-        <div class="ui checkbox">
-            {% crispy_field field %}
-            {% if field.label and form_show_labels %}
-            <label {% if field.field.required %}class="requiredField"{% endif %}>
-                {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
-            </label>
-            {% endif %}
-        </div>
-        {% else %}
-
         {% if field.label and form_show_labels %}
             <label for="{{ field.id_for_label }}" {% if field.field.required %}class="requiredField"{% endif %}>
                 {{ field.label|safe }}{% if field.field.required %}<span class="asteriskField">*</span>{% endif %}
             </label>
         {% endif %}
 
-        {% crispy_field field %}
+        <div class="ui {{ align }} icon input">
+            <i class="{{ icon_class }}"></i>
+            {% crispy_field field %}
+        </div>
 
         {% if field.help_text and form_show_help_text %}
             <div id="hint_{{ field.auto_id }}" class="formHint">{{ field.help_text|safe }}</div>
         {% endif %}
 
-        {% endif %}
 
     </div>
 {% endif %}
